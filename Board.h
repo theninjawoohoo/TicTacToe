@@ -1,3 +1,5 @@
+//This is the board class
+
 #include <iostream>
 #include "cmpt_error.h"
 
@@ -10,7 +12,8 @@ private:
 
 public:
 	Board();
-
+	
+	int getMaxSize();
 	void printBoard();
 	void checkForWinner();
 	bool checkIfValidInput();
