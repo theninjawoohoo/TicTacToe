@@ -1,9 +1,10 @@
 //This is the board class
 
+#ifndef BOARD_H
+#define BOARD_H
+
 #include <iostream>
 #include "cmpt_error.h"
-
-using namespace std;
 
 class Board {
 private:
@@ -18,8 +19,6 @@ public:
 	void checkForWinner();
 	bool checkIfValidInput();
 	void placeMove();
+};
 
-
-}
-
-
+#endif

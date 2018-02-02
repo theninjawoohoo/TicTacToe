@@ -1,5 +1,8 @@
 //This is a computer player class
 
+#ifndef CPU_H
+#define CPU_H
+
 #include <iostream>
 #include "cmpt_error.h"
 
@@ -15,6 +18,6 @@ public:
 	computerPlayer(boolean isTheirTurn);
 
 	void calculateMove(Board theGameBoard);
+};
 
-
-}
+#endif
