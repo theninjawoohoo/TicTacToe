@@ -5,19 +5,23 @@
 
 #include <iostream>
 #include "cmpt_error.h"
+#include "Board.h"
 
 using namespace std;
 
+
+
 class computerPlayer {
 private:
-	boolean isTheirTurn;
-
+	bool isTheirTurn;
 
 public:
 	computerPlayer();
-	computerPlayer(boolean isTheirTurn);
+	computerPlayer(bool isTheirTurn);
 
 	void calculateMove(Board theGameBoard);
 };
 
-#endif
+
+
+#endif 

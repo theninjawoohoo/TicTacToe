@@ -1,24 +1,31 @@
 //This is the board class
 
+//Guards
 #ifndef BOARD_H
 #define BOARD_H
 
 #include <iostream>
 #include "cmpt_error.h"
 
+using namespace std;
+
+
 class Board {
 private:
-	const int maxSize = 2;
-	char boardTiles[maxSize][maxSize];	
+	static const int MAX_SIZE = 2;
+	char boardTiles[MAX_SIZE][MAX_SIZE];	
 
 public:
 	Board();
-	
-	int getMaxSize();
+
+
 	void printBoard();
 	void checkForWinner();
 	bool checkIfValidInput();
-	void placeMove();
+	//Coordinates will be generated
+	void placeMove(string coordinates);
+
+
 };
 
-#endif
+#endif //Board.h
