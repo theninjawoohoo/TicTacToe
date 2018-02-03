@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 class Board {
 private:
 	static const int MAX_SIZE = 2;

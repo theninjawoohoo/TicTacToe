@@ -16,17 +16,18 @@ Board::Board() {
 
 void Board::printBoard() {
 	//This is for printing out the board.
-	const string BORDER_TOP = "* * * * *";
-
+	const string BORDER_TOP = "  +-------+";
+	
+	cout << "    0 1 2" << endl;
 	cout << BORDER_TOP << endl;
 	for(int i = 0; i < MAX_SIZE + 1; i++) {
-		cout << "* ";
+		cout << i << " | ";
 		for(int j = 0; j < MAX_SIZE + 1; j++) {	
 			cout << boardTiles[i][j] << " ";
 		}
-		cout << "*" << endl;
+		cout << "|" << endl;
 	}
-
+	cout << BORDER_TOP << endl;
 }
 
 void Board::checkForWinner() {
