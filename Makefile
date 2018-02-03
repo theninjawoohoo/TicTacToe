@@ -2,9 +2,9 @@ EXENAME = main
 OBJS = main.o Board.o CPU.o
 
 CXX = g++
-CXXFLAGS = -c -g -Wall -Wextra
+CXXFLAGS = -std=c++11 -c -g -Wall -Wextra
 LD = g++
-LDFLAGS = -g -Wall -Wextra
+LDFLAGS = -std=c++11 -g -Wall -Wextra
 
 all: $(EXENAME)
 

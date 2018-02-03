@@ -12,7 +12,8 @@ using namespace std;
 class Board {
 private:
 	static const int MAX_SIZE = 2;
-	char boardTiles[MAX_SIZE][MAX_SIZE];	
+	char boardTiles[MAX_SIZE][MAX_SIZE];
+	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
 
 public:
 	Board();
@@ -20,9 +21,9 @@ public:
 
 	void printBoard();
 	void checkForWinner();
-	bool checkIfValidInput();
+	bool checkIfValidInput(int x, int y);
 	//Coordinates will be generated
-	void placeMove(string coordinates);
+	void placeMove(int x, int y);
 
 
 };

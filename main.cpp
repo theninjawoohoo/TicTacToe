@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-	Board someBoard;
-	someBoard.printBoard();
+	Board board;
+	board.printBoard();
 	cout << "\nThis is just a test." << endl;
 
 	return 0;
