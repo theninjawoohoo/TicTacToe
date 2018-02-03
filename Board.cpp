@@ -34,12 +34,21 @@ void Board::checkForWinner() {
 
 }
 
-bool Board::checkIfValidInput(int x, int y) {
-	return (x >= 0 && x <= MAX_SIZE &&
-	 		y >= 0 && y <= MAX_SIZE && 
-	 		boardTiles[y][x] == Tile::DEFAULT);
+bool Board::validInput(int x, int y) {
+	if (x < 0 && x > MAX_SIZE && y < 0 && y > MAX_SIZE) {
+		cout << "Location is out of bounds.\n" << endl;
+		return false;
+	} else if (boardTiles[y][x] != Tile::DEFAULT) {
+		cout << "Location is already occupied.\n" << endl;
+		return false;
+	}
+	return true;
 }
 
-void Board::placeMove(int x, int y) {
-	
+bool Board::placeMove(int x, int y, char tile) {
+	if (validInput(x, y)) {
+		boardTiles[y][x] = tile;
+		return true;
+	}
+	return false;
 }

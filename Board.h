@@ -15,17 +15,15 @@ private:
 	char boardTiles[MAX_SIZE][MAX_SIZE];
 	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
 
+	bool validInput(int x, int y);
+
 public:
 	Board();
 
-
 	void printBoard();
 	void checkForWinner();
-	bool checkIfValidInput(int x, int y);
 	//Coordinates will be generated
-	void placeMove(int x, int y);
-
-
+	bool placeMove(int x, int y, char tile);
 };
 
 #endif //Board.h
