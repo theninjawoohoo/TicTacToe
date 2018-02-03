@@ -14,10 +14,10 @@ $(EXENAME): $(OBJS)
 main.o: main.cpp Board.h CPU.h
 	$(CXX) $(CXXFLAGS) main.cpp
 
-Board.o: Board.cpp Board.h cmpt_error.h
+Board.o: Board.cpp Board.h
 	$(CXX) $(CXXFLAGS) Board.cpp
 
-CPU.o: CPU.cpp CPU.h cmpt_error.h
+CPU.o: CPU.cpp CPU.h
 	$(CXX) $(CXXFLAGS) CPU.cpp
 
 clean:

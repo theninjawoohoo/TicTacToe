@@ -5,7 +5,6 @@
 #define BOARD_H
 
 #include <iostream>
-#include "cmpt_error.h"
 
 using namespace std;
 

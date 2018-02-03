@@ -4,7 +4,6 @@
 #define CPU_H
 
 #include <iostream>
-#include "cmpt_error.h"
 #include "Board.h"
 
 using namespace std;
