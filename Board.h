@@ -21,6 +21,10 @@ public:
 
 	void printBoard();
 	void checkForWinner();
+	bool checkRows();
+	bool checkColumns();
+	bool checkDiagonals();
+
 	//Coordinates will be generated
 	bool placeMove(int x, int y, char tile);
 };
