@@ -22,6 +22,4 @@ public:
 	void calculateMove(Board theGameBoard);
 };
 
-
-
 #endif 
