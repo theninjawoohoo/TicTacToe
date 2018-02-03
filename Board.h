@@ -11,7 +11,7 @@ using namespace std;
 
 class Board {
 private:
-	static const int MAX_SIZE = 2;
+	static const int MAX_SIZE = 3;
 	char boardTiles[MAX_SIZE][MAX_SIZE];
 	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
 
