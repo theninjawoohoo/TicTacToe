@@ -12,13 +12,15 @@ using namespace std;
 
 class computerPlayer {
 private:
-	bool isTheirTurn;
+	int difficulty;
 
 public:
-	computerPlayer();
-	computerPlayer(bool isTheirTurn);
+	computerPlayer(int difficulty);
 
 	void calculateMove(Board theGameBoard);
-};
+	void placeMove(int rowLocation, int columnLocation); 
+	bool isValidMove(Board theGameBoard);
+
+
 
 #endif 

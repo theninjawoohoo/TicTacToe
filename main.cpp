@@ -6,9 +6,9 @@ using namespace std;
 int main() {
 	Board board;
 	board.printBoard();
+	board.placeMove(0, 2, 'O');
+	board.placeMove(1, 1, 'O');
 	board.placeMove(2, 0, 'O');
-	board.placeMove(2, 1, 'O');
-	board.placeMove(2, 2, 'O');
 	board.printBoard();
 	bool checkC = board.checkColumns();
 	bool checkR = board.checkRows();
