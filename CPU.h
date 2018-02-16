@@ -10,17 +10,16 @@ using namespace std;
 
 
 
-class computerPlayer {
+class CPU {
 private:
 	int difficulty;
 
 public:
-	computerPlayer(int difficulty);
+	CPU(int difficulty);
 
 	void calculateMove(Board theGameBoard);
 	void placeMove(int rowLocation, int columnLocation); 
 	bool isValidMove(Board theGameBoard);
-
-
+};
 
 #endif 
