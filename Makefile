@@ -1,7 +1,7 @@
 EXENAME = main
 TESTEXENAME = tests
 OBJS = main.o Board.o CPU.o
-TESTOBJS = tests-main.o BoardTests.o
+TESTOBJS = tests-main.o Board.o BoardTests.o
 
 CXX = g++
 CXXFLAGS = -std=c++11 -c -g -Wall -Wextra
