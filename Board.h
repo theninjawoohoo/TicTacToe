@@ -10,8 +10,8 @@ using namespace std;
 
 class Board {
 private:
-	static const int MAX_SIZE = 3;
-	char boardTiles[MAX_SIZE][MAX_SIZE];
+	static const int BOARD_SIZE = 3;
+	char boardTiles[BOARD_SIZE][BOARD_SIZE];
 	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
 
 	bool validInput(int x, int y);

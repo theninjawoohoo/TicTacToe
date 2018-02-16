@@ -6,8 +6,8 @@ using namespace std;
 
 Board::Board() {
 	//This is a for that initialize the board to all blank tiles.			
-	for(int i = 0; i < MAX_SIZE; i++) {
-		for(int j = 0; j < MAX_SIZE; j++) {
+	for(int i = 0; i < BOARD_SIZE; i++) {
+		for(int j = 0; j < BOARD_SIZE; j++) {
 			boardTiles[i][j] = Tile::DEFAULT;
 		}
 	}
@@ -20,9 +20,9 @@ void Board::printBoard() {
 
 	cout << "    0 1 2" << endl;
 	cout << BORDER_TOP << endl;
-	for(int i = 0; i < MAX_SIZE; i++) {
+	for(int i = 0; i < BOARD_SIZE; i++) {
 		cout << i << " | ";
-		for(int j = 0; j < MAX_SIZE; j++) {	
+		for(int j = 0; j < BOARD_SIZE; j++) {	
 			cout << boardTiles[i][j] << " ";
 		}
 		cout << "|" << endl;
@@ -38,9 +38,9 @@ bool Board::checkRows() {
 	bool checkIfWinner = false;
 
 	//Checks the rows semi-efficiently
-	for(int i = 0; i < MAX_SIZE; i++) {
+	for(int i = 0; i < BOARD_SIZE; i++) {
 		char tile = boardTiles[i][0];
-		for(int j = 1; j < MAX_SIZE; j++) {
+		for(int j = 1; j < BOARD_SIZE; j++) {
 			if(boardTiles[i][j] != tile || tile == '_') {
 				break;
 			}
@@ -55,10 +55,10 @@ bool Board::checkColumns() {
 	bool checkIfWinner = false;
 
 	//Checks the columns semi-efficiently 
-	for(int i = 0; i < MAX_SIZE; i++) {
+	for(int i = 0; i < BOARD_SIZE; i++) {
 		char tile = boardTiles[0][i];
 
-		for(int j = 1; j < MAX_SIZE; i++) {
+		for(int j = 1; j < BOARD_SIZE; i++) {
 			if(boardTiles[j][i] != tile || tile == '_') {
 				break;
 			}
@@ -73,7 +73,7 @@ bool Board::checkDiagonals() {
 
 	//Check first diagonal
 	char tile = boardTiles[0][0];
-	for(int i = 0; i < MAX_SIZE; i++) {
+	for(int i = 0; i < BOARD_SIZE; i++) {
 		if(tile != boardTiles[i][i] || tile == '_') {
 			break;
 		}
@@ -81,10 +81,10 @@ bool Board::checkDiagonals() {
 	}
 
 	//Check the other diagonal
-	tile = boardTiles[MAX_SIZE - 1][0];
+	tile = boardTiles[BOARD_SIZE - 1][0];
 	int horizantalCoordinates = 1;
 	
-	for(int verticalCoordinates = 1; verticalCoordinates < MAX_SIZE; verticalCoordinates++) {
+	for(int verticalCoordinates = 1; verticalCoordinates < BOARD_SIZE; verticalCoordinates++) {
 		if(tile != boardTiles[horizantalCoordinates][verticalCoordinates] || tile == '_') {
 			break;
 		}
@@ -96,7 +96,7 @@ bool Board::checkDiagonals() {
 }
 
 bool Board::validInput(int x, int y) {
-	if (x < 0 && x > MAX_SIZE && y < 0 && y > MAX_SIZE) {
+	if (x < 0 || x > BOARD_SIZE - 1 || y < 0 || y > BOARD_SIZE - 1) {
 		cout << "Location is out of bounds.\n" << endl;
 		return false;
 	} else if (boardTiles[y][x] != Tile::DEFAULT) {
