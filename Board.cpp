@@ -56,27 +56,17 @@ bool Board::checkColumns() {
 }
 
 bool Board::checkDiagonals() {
+	char topLeft = boardTiles[0][0];
+	char topRight = boardTiles[0][2];
+	char mid = boardTiles[1][1];
+	char botLeft = boardTiles[2][0];
+	char botRight = boardTiles[2][2];
 
-	//Check first diagonal
-	char tile = boardTiles[0][0];
-	for(int i = 0; i < BOARD_SIZE; i++) {
-		if(tile != boardTiles[i][i] || tile == '_') {
-			break;
-		}
+	if (topLeft == mid && botRight == mid && mid != Tile::DEFAULT)
 		return true;
-	}
 
-	//Check the other diagonal
-	tile = boardTiles[BOARD_SIZE - 1][0];
-	int horizantalCoordinates = 1;
-	
-	for(int verticalCoordinates = 1; verticalCoordinates < BOARD_SIZE; verticalCoordinates++) {
-		if(tile != boardTiles[horizantalCoordinates][verticalCoordinates] || tile == '_') {
-			break;
-		}
-		horizantalCoordinates--;
+	if (topRight == mid && botLeft == mid && mid!= Tile::DEFAULT)
 		return true;
-	}
 
 	return false;
 }
