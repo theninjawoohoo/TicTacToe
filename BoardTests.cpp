@@ -23,4 +23,46 @@ TEST_CASE("placeMove") {
 	SECTION("In bounds") {
 		REQUIRE(b.placeMove(0, 0, 'X') == true);
 	}
+
+	SECTION("Location occupied") {
+		b.placeMove(0, 0, 'X');
+		REQUIRE(b.placeMove(0, 0, 'O') == false);
+	}
+
+}
+
+TEST_CASE("checkRows") {
+	Board b;
+
+	SECTION("No winner empty board") {
+		REQUIRE(b.checkRows() == false);
+	}
+
+	SECTION("No winner no matches") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(1, 0, 'X');
+		b.placeMove(2, 0, 'O');
+		REQUIRE(b.checkRows() == false);
+	}
+
+	SECTION("Winner top row") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(1, 0, 'X');
+		b.placeMove(2, 0, 'X');
+		REQUIRE(b.checkRows() == true);
+	}
+
+	SECTION("Winner middle row") {
+		b.placeMove(0, 1, 'X');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 1, 'X');
+		REQUIRE(b.checkRows() == true);
+	}
+
+	SECTION("Winner bottom row") {
+		b.placeMove(0, 2, 'X');
+		b.placeMove(1, 2, 'X');
+		b.placeMove(2, 2, 'X');
+		REQUIRE(b.checkRows() == true);
+	}
 }
