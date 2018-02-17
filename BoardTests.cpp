@@ -137,4 +137,60 @@ TEST_CASE("checkDiagonals") {
 	SECTION("No winner empty board") {
 		REQUIRE(b.checkDiagonals() == false);
 	}
+
+	SECTION("No winner top left to bottom right XXO") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 2, 'X');
+		REQUIRE(b.checkDiagonals() == false);
+	}
+
+	SECTION("No winner top left to bottom right XOX") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(1, 1, 'O');
+		b.placeMove(2, 2, 'X');
+		REQUIRE(b.checkDiagonals() == false);
+	}
+
+	SECTION("No winner top left to bottom right OXX") {
+		b.placeMove(0, 0, 'O');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 2, 'X');
+		REQUIRE(b.checkDiagonals() == false);
+	}
+
+	SECTION("No winner bottom left to top right XXO") {
+		b.placeMove(0, 2, 'X');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 0, 'O');
+		REQUIRE(b.checkDiagonals() == false);
+	}
+
+	SECTION("No winner bottom left to top right XOX") {
+		b.placeMove(0, 2, 'X');
+		b.placeMove(1, 1, 'O');
+		b.placeMove(2, 0, 'X');
+		REQUIRE(b.checkDiagonals() == false);
+	}
+
+	SECTION("No winner bottom left to top right OXX") {
+		b.placeMove(0, 2, 'O');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 0, 'X');
+		REQUIRE(b.checkDiagonals() == false);
+	}
+
+	SECTION("Winner top left to bottom right") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 2, 'X');
+		REQUIRE(b.checkDiagonals() == true);
+	}
+
+	SECTION("Winner bottom left to top right") {
+		b.placeMove(0, 2, 'X');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(2, 0, 'X');
+		REQUIRE(b.checkDiagonals() == true);
+	}
 }
