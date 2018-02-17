@@ -6,9 +6,9 @@ using namespace std;
 
 Board::Board() {
 	//This is a for that initialize the board to all blank tiles.			
-	for(int i = 0; i < BOARD_SIZE; i++) {
-		for(int j = 0; j < BOARD_SIZE; j++) {
-			boardTiles[i][j] = Tile::DEFAULT;
+	for(int x = 0; x < BOARD_SIZE; x++) {
+		for(int y = 0; y < BOARD_SIZE; y++) {
+			boardTiles[y][x] = Tile::DEFAULT;
 		}
 	}
 }
@@ -16,14 +16,13 @@ Board::Board() {
 
 void Board::printBoard() {
 	//This is for printing out the board.
-	const string BORDER_TOP = "  +-------+";
-
+	string BORDER_TOP = "  +-------+";
 	cout << "    0 1 2" << endl;
 	cout << BORDER_TOP << endl;
-	for(int i = 0; i < BOARD_SIZE; i++) {
-		cout << i << " | ";
-		for(int j = 0; j < BOARD_SIZE; j++) {	
-			cout << boardTiles[i][j] << " ";
+	for(int x = 0; x < BOARD_SIZE; x++) {
+		cout << x << " | ";
+		for(int y = 0; y < BOARD_SIZE; y++) {	
+			cout << boardTiles[y][x] << " ";
 		}
 		cout << "|" << endl;
 	}
@@ -35,20 +34,28 @@ void Board::checkForWinner() {
 }
 
 bool Board::checkRows() {
-	bool checkIfWinner = false;
-
-	//Checks the rows semi-efficiently
-	for(int i = 0; i < BOARD_SIZE; i++) {
-		char tile = boardTiles[i][0];
-		for(int j = 1; j < BOARD_SIZE; j++) {
-			if(boardTiles[i][j] != tile || tile == '_') {
-				break;
-			}
-			checkIfWinner = true;
-		}
-	}
+	// bool checkIfWinner = false;
+	// //Checks the rows semi-efficiently
+	// for(int x = 0; x < BOARD_SIZE; x++) {
+	// 	char tile = boardTiles[x][0];
+	// 	for(int y = 1; y < BOARD_SIZE; y++) {
+	// 		if(boardTiles[x][y] != tile || tile == '_') {
+	// 			break;
+	// 		}
+	// 		checkIfWinner = true;
+	// 	}
+	// }
 	
-	return checkIfWinner;
+	// return checkIfWinner;
+
+	for (int y = 0; y < BOARD_SIZE; y++) {
+		char leftTile = boardTiles[y][0];
+		char middleTile = boardTiles[y][1];
+		char rightTile = boardTiles[y][2];
+		if (leftTile == middleTile && leftTile == rightTile && leftTile != Tile::DEFAULT)
+			return true;
+	}
+	return false;
 }	
 
 bool Board::checkColumns() {

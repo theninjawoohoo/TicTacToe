@@ -38,10 +38,24 @@ TEST_CASE("checkRows") {
 		REQUIRE(b.checkRows() == false);
 	}
 
-	SECTION("No winner no matches") {
+	SECTION("No winner no matches XXO") {
 		b.placeMove(0, 0, 'X');
 		b.placeMove(1, 0, 'X');
 		b.placeMove(2, 0, 'O');
+		REQUIRE(b.checkRows() == false);
+	}
+
+	SECTION("No winner no matches XOX") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(1, 0, 'O');
+		b.placeMove(2, 0, 'X');
+		REQUIRE(b.checkRows() == false);
+	}
+
+	SECTION("No winner no matches OXX") {
+		b.placeMove(0, 0, 'O');
+		b.placeMove(1, 0, 'X');
+		b.placeMove(2, 0, 'X');
 		REQUIRE(b.checkRows() == false);
 	}
 
