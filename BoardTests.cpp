@@ -80,3 +80,61 @@ TEST_CASE("checkRows") {
 		REQUIRE(b.checkRows() == true);
 	}
 }
+
+TEST_CASE("checkColumns") {
+	Board b;
+
+	SECTION("No winner empty board") {
+		REQUIRE(b.checkColumns() == false);
+	}
+
+	SECTION("No winner no matches XXO") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(0, 1, 'X');
+		b.placeMove(0, 2, 'O');
+		REQUIRE(b.checkColumns() == false);
+	}
+
+	SECTION("No winner no matches XOX") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(0, 1, 'O');
+		b.placeMove(0, 2, 'X');
+		REQUIRE(b.checkColumns() == false);
+	}
+
+	SECTION("No winner no matches OXX") {
+		b.placeMove(0, 0, 'O');
+		b.placeMove(0, 1, 'X');
+		b.placeMove(0, 2, 'X');
+		REQUIRE(b.checkColumns() == false);
+	}
+
+	SECTION("Winner left column") {
+		b.placeMove(0, 0, 'X');
+		b.placeMove(0, 1, 'X');
+		b.placeMove(0, 2, 'X');
+		REQUIRE(b.checkColumns() == true);
+	}
+
+	SECTION("Winner middle column") {
+		b.placeMove(1, 0, 'X');
+		b.placeMove(1, 1, 'X');
+		b.placeMove(1, 2, 'X');
+		REQUIRE(b.checkColumns() == true);
+	}
+
+	SECTION("Winner right column") {
+		b.placeMove(2, 0, 'X');
+		b.placeMove(2, 1, 'X');
+		b.placeMove(2, 2, 'X');
+		REQUIRE(b.checkColumns() == true);
+	}
+}
+
+TEST_CASE("checkDiagonals") {
+	Board b;
+
+	SECTION("No winner empty board") {
+		REQUIRE(b.checkDiagonals() == false);
+	}
+}
