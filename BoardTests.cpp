@@ -141,7 +141,7 @@ TEST_CASE("checkDiagonals") {
 	SECTION("No winner top left to bottom right XXO") {
 		b.placeMove(0, 0, 'X');
 		b.placeMove(1, 1, 'X');
-		b.placeMove(2, 2, 'X');
+		b.placeMove(2, 2, 'O');
 		REQUIRE(b.checkDiagonals() == false);
 	}
 
