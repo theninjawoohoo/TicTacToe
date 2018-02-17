@@ -5,7 +5,7 @@
 using namespace std;
 
 Board::Board() {
-	//This is a for that initialize the board to all blank tiles.			
+	//Construct board with default tiles.			
 	for(int x = 0; x < BOARD_SIZE; x++) {
 		for(int y = 0; y < BOARD_SIZE; y++) {
 			boardTiles[y][x] = Tile::DEFAULT;
@@ -15,7 +15,6 @@ Board::Board() {
 
 
 void Board::printBoard() {
-	//This is for printing out the board.
 	string BORDER_TOP = "  +-------+";
 	cout << "    0 1 2" << endl;
 	cout << BORDER_TOP << endl;
@@ -29,8 +28,8 @@ void Board::printBoard() {
 	cout << BORDER_TOP << endl;
 }
 
-void Board::checkForWinner() {
-
+bool Board::checkForWinner() {
+	return checkRows() || checkColumns() || checkDiagonals();
 }
 
 bool Board::checkRows() {
@@ -62,9 +61,10 @@ bool Board::checkDiagonals() {
 	char botLeft = boardTiles[2][0];
 	char botRight = boardTiles[2][2];
 
+	//Checks diagonal top left to bottom right
 	if (topLeft == mid && botRight == mid && mid != Tile::DEFAULT)
 		return true;
-
+	//Checks diagonal top right to bottom left
 	if (topRight == mid && botLeft == mid && mid!= Tile::DEFAULT)
 		return true;
 
@@ -72,10 +72,13 @@ bool Board::checkDiagonals() {
 }
 
 bool Board::validInput(int x, int y) {
+	//Checks if out of bounds
 	if (x < 0 || x > BOARD_SIZE - 1 || y < 0 || y > BOARD_SIZE - 1) {
 		cout << "Location is out of bounds.\n" << endl;
 		return false;
-	} else if (boardTiles[y][x] != Tile::DEFAULT) {
+	} 
+	//Checks if location is occupied
+	if (boardTiles[y][x] != Tile::DEFAULT) {
 		cout << "Location is already occupied.\n" << endl;
 		return false;
 	}

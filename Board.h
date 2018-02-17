@@ -20,7 +20,7 @@ public:
 	Board();
 
 	void printBoard();
-	void checkForWinner();
+	bool checkForWinner();
 	bool checkRows();
 	bool checkColumns();
 	bool checkDiagonals();
