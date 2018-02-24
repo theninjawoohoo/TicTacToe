@@ -1,6 +1,6 @@
 EXENAME = main
 TESTEXENAME = tests
-OBJS = main.o Board.o CPU.o
+OBJS = main.o GameLoop.o Board.o CPU.o
 TESTOBJS = tests-main.o Board.o BoardTests.o
 
 CXX = g++
@@ -15,6 +15,9 @@ $(EXENAME): $(OBJS)
 
 main.o: main.cpp Board.h CPU.h
 	$(CXX) $(CXXFLAGS) main.cpp
+
+GameLoop.o: GameLoop.cpp GameLoop.h
+	$(CXX) $(CXXFLAGS) GameLoop.cpp
 
 Board.o: Board.cpp Board.h
 	$(CXX) $(CXXFLAGS) Board.cpp
