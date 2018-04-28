@@ -13,8 +13,8 @@ private:
 	static const int BOARD_SIZE = 3;
 	char boardTiles[BOARD_SIZE][BOARD_SIZE];
 	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
-
-	bool validInput(int x, int y);
+	bool inBounds(int x, int y);
+	bool unoccupied(int x, int y);
 
 public:
 	Board();
@@ -25,8 +25,8 @@ public:
 	bool checkColumns();
 	bool checkDiagonals();
 
-	//Coordinates will be generated
 	bool placeMove(int x, int y, char tile);
+	bool validInput(int x, int y);
 };
 
 #endif //Board.h

@@ -71,24 +71,29 @@ bool Board::checkDiagonals() {
 	return false;
 }
 
+bool Board::inBounds(int x, int y) {
+	return x < BOARD_SIZE && x >= 0 && y < BOARD_SIZE && y >= 0;
+}
+
+bool Board::unoccupied(int x, int y) {
+	return boardTiles[y][x] == Tile::DEFAULT;
+}
+
 bool Board::validInput(int x, int y) {
-	//Checks if out of bounds
-	if (x < 0 || x > BOARD_SIZE - 1 || y < 0 || y > BOARD_SIZE - 1) {
-		cout << "Location is out of bounds.\n" << endl;
-		return false;
-	} 
-	//Checks if location is occupied
-	if (boardTiles[y][x] != Tile::DEFAULT) {
-		cout << "Location is already occupied.\n" << endl;
-		return false;
-	}
-	return true;
+	return inBounds(x, y) && unoccupied(x, y);	
 }
 
 bool Board::placeMove(int x, int y, char tile) {
-	if (validInput(x, y)) {
-		boardTiles[y][x] = tile;
-		return true;
+	if (!inBounds(x, y)) {
+		cout << "Location is out of bounds.\n" << endl;
+		return false;
 	}
-	return false;
+
+	if (!unoccupied(x, y)) {
+		cout << "Location is already occupied.\n" << endl;
+		return false;
+	}
+
+	boardTiles[y][x] = tile;
+	return true;
 }
