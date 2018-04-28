@@ -8,18 +8,11 @@
 
 using namespace std;
 
-
-
 class CPU {
-private:
-	int difficulty;
-
 public:
-	CPU(int difficulty);
+	CPU();
 
-	void calculateMove(Board theGameBoard);
-	void placeMove(int rowLocation, int columnLocation); 
-	bool isValidMove(Board theGameBoard);
+	void placeMove(Board & board);
 };
 
 #endif 
