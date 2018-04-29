@@ -10,9 +10,15 @@ using namespace std;
 class GameLoop {
 private:
 	Board board;
+	CPU cpu;
+	int turn;
+
+	void handleUserInput();
 
 public:
 	GameLoop();
+
+	void run();
 };
 
 #endif

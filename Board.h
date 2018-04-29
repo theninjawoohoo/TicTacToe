@@ -12,12 +12,13 @@ class Board {
 private:
 	static const int BOARD_SIZE = 3;
 	char boardTiles[BOARD_SIZE][BOARD_SIZE];
-	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
 	bool inBounds(int x, int y);
 	bool unoccupied(int x, int y);
 
 public:
 	Board();
+
+	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
 
 	void printBoard();
 	bool checkForWinner();

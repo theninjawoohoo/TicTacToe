@@ -19,5 +19,5 @@ void CPU::placeMove(Board & board) {
 		y = rand() % 3;
 	}
 	while (!board.validInput(x, y));
-	board.placeMove(x, y, 'O');
+	board.placeMove(x, y, board.Tile::O);
 }
