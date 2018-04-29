@@ -25,6 +25,6 @@ void GameLoop::run() {
 	}
 }
 
-void handleUserInput() {
+void GameLoop::handleUserInput() {
 
 }
