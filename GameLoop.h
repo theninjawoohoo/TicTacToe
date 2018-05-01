@@ -15,6 +15,7 @@ private:
 
 	void handleUserInput();
 	void trimSpaces(string &input);
+	bool checkLength(string &input);
 
 public:
 	GameLoop();

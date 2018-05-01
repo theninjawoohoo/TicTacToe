@@ -35,3 +35,7 @@ void GameLoop::trimSpaces(string &input) {
 			input.erase(i, 1);
  	}
 }
+
+bool GameLoop::checkLength(string &input) {
+	return input.length() != 2;
+}
