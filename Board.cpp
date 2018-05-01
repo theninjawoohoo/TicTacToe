@@ -80,7 +80,7 @@ bool Board::unoccupied(int x, int y) {
 	return boardTiles[y][x] == Tile::DEFAULT;
 }
 
-bool Board::validInput(int x, int y) {
+bool Board::validInputPrint(int x, int y) {
 	if (!inBounds(x, y)) {
 		cout << "Location is out of bounds.\n" << endl;
 		return false;
@@ -90,6 +90,10 @@ bool Board::validInput(int x, int y) {
 		return false;
 	}
 	return true;
+}
+
+bool Board::validInput(int x, int y) {
+	return inBounds(x, y) && unoccupied(x, y);
 }
 
 void Board::placeMove(int x, int y, char tile) {

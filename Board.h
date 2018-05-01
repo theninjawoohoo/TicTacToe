@@ -25,6 +25,7 @@ public:
 	bool checkDiagonals();
 
 	void placeMove(int x, int y, char tile);
+	bool validInputPrint(int x, int y);
 	bool validInput(int x, int y);
 };
 
