@@ -16,8 +16,9 @@ private:
 
 	void handleUserInput();
 	void trimSpaces(string &input);
-	bool checkLength(string &input);
-	pair<int, int> stringToPairInt(string &input);
+	bool validInput(string &input);
+	bool validLength(string &input);
+	pair<int,int> stringToPairInt(string &input);
 
 public:
 	GameLoop();

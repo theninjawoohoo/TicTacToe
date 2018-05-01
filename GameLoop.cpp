@@ -20,6 +20,7 @@ void GameLoop::run() {
 		} else {
 			cpu.placeMove(board);
 		}
+		cout << endl;
 		board.printBoard();
 		cout << endl;
 		turn++;
@@ -27,21 +28,39 @@ void GameLoop::run() {
 }
 
 void GameLoop::handleUserInput() {
+	string input;
+	do {
+		cout << "Enter a xy coordinate: ";
+		getline(cin, input);
+		trimSpaces(input);
+	}
+	while (!validInput(input));
 
+	pair<int,int> coords = stringToPairInt(input);
+	board.placeMove(coords.first, coords.second, 'X');
 }
 
 void GameLoop::trimSpaces(string &input) {
 	for (unsigned int i = 0; i < input.length(); i++) {
-		if (input.at(i) == ' ')
+		if (input.at(i) == ' ') {
 			input.erase(i, 1);
+			i--;
+		}
  	}
 }
 
-bool GameLoop::checkLength(string &input) {
-	return input.length() != 2;
+bool GameLoop::validInput(string &input) {
+	if (!validLength(input))
+		return false;
+	pair<int,int> coords = stringToPairInt(input);
+	return board.validInput(coords.first, coords.second);
 }
 
-pair<int, int> GameLoop::stringToPairInt(string &input) {
+bool GameLoop::validLength(string &input) {
+	return input.length() == 2;
+}
+
+pair<int,int> GameLoop::stringToPairInt(string &input) {
 	//48 is the ascii code for 0.
 	int x = input.at(0) - 48;
 	int y = input.at(1) - 48;
