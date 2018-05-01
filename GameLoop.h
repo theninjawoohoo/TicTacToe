@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "CPU.h"
 #include <iostream>
+#include <utility> 
 
 using namespace std;
 
@@ -16,6 +17,7 @@ private:
 	void handleUserInput();
 	void trimSpaces(string &input);
 	bool checkLength(string &input);
+	pair<int, int> stringToPairInt(string &input);
 
 public:
 	GameLoop();

@@ -40,3 +40,10 @@ void GameLoop::trimSpaces(string &input) {
 bool GameLoop::checkLength(string &input) {
 	return input.length() != 2;
 }
+
+pair<int, int> GameLoop::stringToPairInt(string &input) {
+	//48 is the ascii code for 0.
+	int x = input.at(0) - 48;
+	int y = input.at(1) - 48;
+	return make_pair(x, y);
+}
