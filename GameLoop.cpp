@@ -23,7 +23,7 @@ void GameLoop::run() {
 		cout << endl;
 		board.printBoard();
 		cout << endl;
-		if (turn > 5)
+		if (turn >= 5)
 			if (board.checkForWinner())
 				break;
 		turn++;

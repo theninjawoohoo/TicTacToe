@@ -38,8 +38,10 @@ bool Board::checkRows() {
 		char left = boardTiles[y][0];
 		char mid = boardTiles[y][1];
 		char right = boardTiles[y][2];
-		if (left == mid && left == right && left != Tile::DEFAULT)
+		if (left == mid && left == right && left != Tile::DEFAULT) {
+			cout << mid << " won the game!" << endl;
 			return true;
+		}
 	}
 	return false;
 }	
@@ -49,8 +51,10 @@ bool Board::checkColumns() {
 		char top = boardTiles[0][x];
 		char mid = boardTiles[1][x];
 		char bot = boardTiles[2][x];
-		if (top == mid && top == bot && top != Tile::DEFAULT)
+		if (top == mid && top == bot && top != Tile::DEFAULT) {
+			cout << mid << " won the game!" << endl;
 			return true;
+		}
 	}
 	return false;
 }
@@ -63,11 +67,15 @@ bool Board::checkDiagonals() {
 	char botRight = boardTiles[2][2];
 
 	//Checks diagonal top left to bottom right
-	if (topLeft == mid && botRight == mid && mid != Tile::DEFAULT)
+	if (topLeft == mid && botRight == mid && mid != Tile::DEFAULT) {
+		cout << mid << " won the game!" << endl;
 		return true;
+	}
 	//Checks diagonal top right to bottom left
-	if (topRight == mid && botLeft == mid && mid!= Tile::DEFAULT)
+	if (topRight == mid && botLeft == mid && mid!= Tile::DEFAULT) {
+		cout << mid << " won the game!" << endl;
 		return true;
+	}
 
 	return false;
 }
