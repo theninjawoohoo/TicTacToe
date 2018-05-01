@@ -5,28 +5,28 @@ TEST_CASE("validInput") {
 	Board b;
 
 	SECTION("Out of bounds: x < 0") {
-		REQUIRE(b.validInput(-1, 0) == false);
+		REQUIRE(b.validInputPrint(-1, 0) == false);
 	}
 
 	SECTION("Out of bounds: x > BOARD_SIZE") {
-		REQUIRE(b.validInput(3, 0) == false);
+		REQUIRE(b.validInputPrint(3, 0) == false);
 	}
 
 	SECTION("Out of bounds: y < 0") {
-		REQUIRE(b.validInput(0, -1) == false);
+		REQUIRE(b.validInputPrint(0, -1) == false);
 	}
 
 	SECTION("Out of bounds: y > BOARD_SIZE") {
-		REQUIRE(b.validInput(0, 3) == false);
+		REQUIRE(b.validInputPrint(0, 3) == false);
 	}
 
 	SECTION("In bounds") {
-		REQUIRE(b.validInput(0, 0) == true);
+		REQUIRE(b.validInputPrint(0, 0) == true);
 	}
 
 	SECTION("Location occupied") {
 		b.placeMove(0, 0, 'X');
-		REQUIRE(b.validInput(0, 0) == false);
+		REQUIRE(b.validInputPrint(0, 0) == false);
 	}
 
 }
