@@ -14,19 +14,23 @@ void GameLoop::run() {
 	board.printBoard();
 	cout << "Enter a xy cooridinate to place a tile (e.g. 02).\n" << endl;
 
-	while(turn < 9) {
+	while(true) {
 		if (turn % 2 == 0) {
 			handleUserInput();
 		} else {
 			cpu.placeMove(board);
 		}
+		turn++;
 		cout << endl;
 		board.printBoard();
 		cout << endl;
 		if (turn >= 5)
 			if (board.checkForWinner())
 				break;
-		turn++;
+		if (turn == 9) {
+			cout << "There was a tie." << endl;
+			break;
+		}
 	}
 }
 
