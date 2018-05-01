@@ -17,7 +17,6 @@ Board::Board() {
 
 void Board::printBoard() {
 	string BORDER_TOP = "  +-------+";
-	cout << "    0 1 2" << endl;
 	cout << BORDER_TOP << endl;
 	for(int y = 0; y < BOARD_SIZE; y++) {
 		cout << y << " | ";
@@ -27,6 +26,7 @@ void Board::printBoard() {
 		cout << "|" << endl;
 	}
 	cout << BORDER_TOP << endl;
+	cout << "    0 1 2" << endl;
 }
 
 bool Board::checkForWinner() {
