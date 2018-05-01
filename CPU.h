@@ -12,7 +12,7 @@ class CPU {
 public:
 	CPU();
 
-	void placeMove(Board & board);
+	void placeMove(Board &board);
 };
 
 #endif 

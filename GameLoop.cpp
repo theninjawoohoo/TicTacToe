@@ -28,3 +28,10 @@ void GameLoop::run() {
 void GameLoop::handleUserInput() {
 
 }
+
+void GameLoop::trimSpaces(string &input) {
+	for (unsigned int i = 0; i < input.length(); i++) {
+		if (input.at(i) == ' ')
+			input.erase(i, 1);
+ 	}
+}

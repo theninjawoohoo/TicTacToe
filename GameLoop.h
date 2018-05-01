@@ -14,6 +14,7 @@ private:
 	int turn;
 
 	void handleUserInput();
+	void trimSpaces(string &input);
 
 public:
 	GameLoop();

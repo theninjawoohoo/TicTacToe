@@ -10,7 +10,7 @@ CPU::CPU() {
 }
 
 //Places a tile at a random valid location on given board
-void CPU::placeMove(Board & board) {
+void CPU::placeMove(Board &board) {
 	int x;
 	int y;
 
