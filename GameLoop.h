@@ -1,9 +1,9 @@
 #ifndef GAMELOOP_H
 #define GAMELOOP_H
 
-#include <iostream>
 #include "Board.h"
 #include "CPU.h"
+#include <iostream>
 
 using namespace std;
 

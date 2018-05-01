@@ -1,6 +1,7 @@
 //Includes board.h and makes the definitions
 
 #include "Board.h"
+#include <iostream>
 
 using namespace std;
 

@@ -3,7 +3,6 @@
 #ifndef CPU_H
 #define CPU_H
 
-#include <iostream>
 #include "Board.h"
 
 using namespace std;
