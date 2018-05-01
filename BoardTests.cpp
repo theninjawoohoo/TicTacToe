@@ -1,32 +1,32 @@
 #include "catch.hpp"
 #include "Board.h"
 
-TEST_CASE("placeMove") {
+TEST_CASE("validInput") {
 	Board b;
 
 	SECTION("Out of bounds: x < 0") {
-		REQUIRE(b.placeMove(-1, 0, 'X') == false);
+		REQUIRE(b.validInput(-1, 0) == false);
 	}
 
 	SECTION("Out of bounds: x > BOARD_SIZE") {
-		REQUIRE(b.placeMove(3, 0, 'X') == false);
+		REQUIRE(b.validInput(3, 0) == false);
 	}
 
 	SECTION("Out of bounds: y < 0") {
-		REQUIRE(b.placeMove(0, -1, 'X') == false);
+		REQUIRE(b.validInput(0, -1) == false);
 	}
 
 	SECTION("Out of bounds: y > BOARD_SIZE") {
-		REQUIRE(b.placeMove(0, 3, 'X') == false);
+		REQUIRE(b.validInput(0, 3) == false);
 	}
 
 	SECTION("In bounds") {
-		REQUIRE(b.placeMove(0, 0, 'X') == true);
+		REQUIRE(b.validInput(0, 0) == true);
 	}
 
 	SECTION("Location occupied") {
 		b.placeMove(0, 0, 'X');
-		REQUIRE(b.placeMove(0, 0, 'O') == false);
+		REQUIRE(b.validInput(0, 0) == false);
 	}
 
 }

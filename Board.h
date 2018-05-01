@@ -24,7 +24,7 @@ public:
 	bool checkColumns();
 	bool checkDiagonals();
 
-	bool placeMove(int x, int y, char tile);
+	void placeMove(int x, int y, char tile);
 	bool validInput(int x, int y);
 };
 
