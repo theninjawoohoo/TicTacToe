@@ -8,20 +8,31 @@ using namespace std;
 Board::Board() {
 	//Construct board with default tiles.			
 	for(int x = 0; x < BOARD_SIZE; x++) {
-		for(int y = 0; y < BOARD_SIZE; y++) {
-			boardTiles[y][x] = Tile::DEFAULT;
-		}
+		boardTiles[x] = Tile::DEFAULT;
 	}
 }
 
-
 void Board::printBoard() {
+	
 	string BORDER_TOP = "  +-------+";
 	cout << BORDER_TOP << endl;
-	for(int y = 0; y < BOARD_SIZE; y++) {
+	
+	for(int y = 0; y < OLD_BOARD_SIZE; y++) {
 		cout << y << " | ";
-		for(int x = 0; x < BOARD_SIZE; x++) {	
-			cout << boardTiles[y][x] << " ";
+		for(int x = 0; x < OLD_BOARD_SIZE; x++) {	
+			int locationOfTile = x + 3 * y;
+
+			if(boardTiles[locationOfTile] == Tile::DEFAULT) {
+				cout << " "; 
+			}
+			else if(boardTiles[locationOfTile] == Tile::X) {
+				cout << "X";
+			}
+			else {
+				cout << "O";
+			}
+
+			cout << " ";
 		}
 		cout << "|" << endl;
 	}
@@ -34,10 +45,11 @@ bool Board::checkForWinner() {
 }
 
 bool Board::checkRows() {
-	for (int y = 0; y < BOARD_SIZE; y++) {
-		char left = boardTiles[y][0];
-		char mid = boardTiles[y][1];
-		char right = boardTiles[y][2];
+
+	for (int i = 0; i < OLD_BOARD_SIZE; i++) {
+		short left = boardTiles[3*i];
+		short mid = boardTiles[3*i + 1];
+		short right = boardTiles[3*i + 2];
 		if (left == mid && left == right && left != Tile::DEFAULT) {
 			cout << mid << " won the game!" << endl;
 			return true;
@@ -47,10 +59,10 @@ bool Board::checkRows() {
 }	
 
 bool Board::checkColumns() {
-	for (int x = 0; x < BOARD_SIZE; x++) {
-		char top = boardTiles[0][x];
-		char mid = boardTiles[1][x];
-		char bot = boardTiles[2][x];
+	for (int i = 0; i < BOARD_SIZE; i++) {
+		short top = boardTiles[i];
+		short mid = boardTiles[i + 3];
+		short bot = boardTiles[i + 6];
 		if (top == mid && top == bot && top != Tile::DEFAULT) {
 			cout << mid << " won the game!" << endl;
 			return true;
@@ -60,20 +72,36 @@ bool Board::checkColumns() {
 }
 
 bool Board::checkDiagonals() {
-	char topLeft = boardTiles[0][0];
-	char topRight = boardTiles[0][2];
-	char mid = boardTiles[1][1];
-	char botLeft = boardTiles[2][0];
-	char botRight = boardTiles[2][2];
+	char topLeft = boardTiles[0];
+	char topRight = boardTiles[2];
+	char mid = boardTiles[4];
+	char botLeft = boardTiles[6];
+	char botRight = boardTiles[8];
 
 	//Checks diagonal top left to bottom right
 	if (topLeft == mid && botRight == mid && mid != Tile::DEFAULT) {
-		cout << mid << " won the game!" << endl;
+		char winner;
+		if(mid == 0) {
+			winner = 'O';
+		}
+		else {
+			winner = 'X';
+		}
+
+
+		cout << winner << " won the game!" << endl;
 		return true;
 	}
 	//Checks diagonal top right to bottom left
 	if (topRight == mid && botLeft == mid && mid!= Tile::DEFAULT) {
-		cout << mid << " won the game!" << endl;
+		char winner;
+		if(mid == 0) {
+			winner = 'O';
+		}
+		else {
+			winner = 'X';
+		}
+		cout << winner << " won the game!" << endl;
 		return true;
 	}
 
@@ -81,11 +109,12 @@ bool Board::checkDiagonals() {
 }
 
 bool Board::inBounds(int x, int y) {
-	return x < BOARD_SIZE && x >= 0 && y < BOARD_SIZE && y >= 0;
+	return x < OLD_BOARD_SIZE && x >= 0 && y < OLD_BOARD_SIZE && y >= 0;
 }
 
 bool Board::unoccupied(int x, int y) {
-	return boardTiles[y][x] == Tile::DEFAULT;
+	int userInputTranslation = x + 3 * y;
+	return boardTiles[userInputTranslation] == Tile::DEFAULT;
 }
 
 bool Board::validInputPrint(int x, int y) {
@@ -104,6 +133,7 @@ bool Board::validInput(int x, int y) {
 	return inBounds(x, y) && unoccupied(x, y);
 }
 
-void Board::placeMove(int x, int y, char tile) {
-	boardTiles[y][x] = tile;
+void Board::placeMove(int x, int y, short tile) {
+	int userInputTranslation = x + 3 * y;
+	boardTiles[userInputTranslation] = tile;
 }

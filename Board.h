@@ -8,15 +8,16 @@ using namespace std;
 
 class Board {
 private:
-	static const int BOARD_SIZE = 3;
-	char boardTiles[BOARD_SIZE][BOARD_SIZE];
+	static const int OLD_BOARD_SIZE = 3;
+	static const int BOARD_SIZE = 9;
+	short boardTiles[BOARD_SIZE];
 	bool inBounds(int x, int y);
 	bool unoccupied(int x, int y);
 
 public:
 	Board();
 
-	enum Tile:char {DEFAULT = '_', X = 'X',	O = 'O'};
+	enum Tile:short {DEFAULT = 1, X = 2, O = 0};
 
 	void printBoard();
 	bool checkForWinner();
@@ -24,9 +25,10 @@ public:
 	bool checkColumns();
 	bool checkDiagonals();
 
-	void placeMove(int x, int y, char tile);
+	void placeMove(int x, int y, short tile);
 	bool validInputPrint(int x, int y);
 	bool validInput(int x, int y);
+	
 };
 
 #endif //Board.h
