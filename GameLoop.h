@@ -2,7 +2,7 @@
 #define GAMELOOP_H
 
 #include "Board.h"
-#include "CPU.h"
+#include "RandomCPU.h"
 #include <iostream>
 #include <utility> 
 
@@ -11,7 +11,7 @@ using namespace std;
 class GameLoop {
 private:
 	Board board;
-	CPU cpu;
+	RandomCPU cpu;
 	int turn;
 
 	void handleUserInput();

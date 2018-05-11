@@ -1,6 +1,6 @@
 EXENAME = main
 TESTEXENAME = tests
-OBJS = main.o GameLoop.o Board.o CPU.o
+OBJS = main.o GameLoop.o Board.o CPU.o RandomCPU.o
 TESTOBJS = tests-main.o Board.o BoardTests.o
 
 CXX = g++
@@ -13,7 +13,7 @@ all: $(EXENAME) tests
 $(EXENAME): $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-main.o: main.cpp Board.h CPU.h
+main.o: main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
 
 GameLoop.o: GameLoop.cpp GameLoop.h
@@ -24,6 +24,9 @@ Board.o: Board.cpp Board.h
 
 CPU.o: CPU.cpp CPU.h
 	$(CXX) $(CXXFLAGS) CPU.cpp
+
+RandomCPU.o: RandomCPU.cpp RandomCPU.h
+	$(CXX) $(CXXFLAGS) RandomCPU.cpp
 
 $(TESTEXENAME): $(TESTOBJS)
 	$(LD) $(TESTOBJS) $(LDFLAGS) -o $(TESTEXENAME)

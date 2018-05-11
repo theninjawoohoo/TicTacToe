@@ -6,7 +6,7 @@ using namespace std;
 
 GameLoop::GameLoop() {
 	board = Board();
-	cpu = CPU();
+	cpu = RandomCPU();
 	turn = 0;
 }
 

@@ -11,7 +11,7 @@ class CPU {
 public:
 	CPU();
 
-	void placeMove(Board &board);
+	virtual void placeMove(Board &board) = 0;
 };
 
 #endif 
