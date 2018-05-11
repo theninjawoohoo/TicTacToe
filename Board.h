@@ -8,16 +8,17 @@ using namespace std;
 
 class Board {
 private:
-	static const int OLD_BOARD_SIZE = 3;
 	static const int BOARD_SIZE = 9;
 	short boardTiles[BOARD_SIZE];
+	int coordToBoardPosition(int x, int y);
+	char shortToTile(short x);
 	bool inBounds(int x, int y);
 	bool unoccupied(int x, int y);
 
 public:
 	Board();
 
-	enum Tile:short {DEFAULT = 1, X = 2, O = 0};
+	enum Tile:short {DEFAULT = 0, X = 1, O = 2};
 
 	void printBoard();
 	bool checkForWinner();
