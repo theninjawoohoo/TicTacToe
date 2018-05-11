@@ -29,7 +29,6 @@ public:
 	void placeMove(int x, int y, short tile);
 	bool validInputPrint(int x, int y);
 	bool validInput(int x, int y);
-	
 };
 
 #endif //Board.h

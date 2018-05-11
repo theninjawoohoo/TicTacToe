@@ -120,4 +120,3 @@ bool Board::validInput(int x, int y) {
 void Board::placeMove(int x, int y, short tile) {
 	boardTiles[coordToBoardPosition(x, y)] = tile;
 }
-

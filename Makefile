@@ -1,6 +1,6 @@
 EXENAME = main
 TESTEXENAME = tests
-OBJS = main.o GameLoop.o Board.o CPU.o RandomCPU.o
+OBJS = main.o GameLoop.o Board.o CPU.o RandomCPU.o MinMaxCPU.o
 TESTOBJS = tests-main.o Board.o BoardTests.o
 
 CXX = g++
@@ -27,6 +27,9 @@ CPU.o: CPU.cpp CPU.h
 
 RandomCPU.o: RandomCPU.cpp RandomCPU.h
 	$(CXX) $(CXXFLAGS) RandomCPU.cpp
+
+MinMaxCPU.o: MinMaxCPU.cpp MinMaxCPU.h
+	$(CXX) $(CXXFLAGS) MinMaxCPU.cpp
 
 $(TESTEXENAME): $(TESTOBJS)
 	$(LD) $(TESTOBJS) $(LDFLAGS) -o $(TESTEXENAME)
