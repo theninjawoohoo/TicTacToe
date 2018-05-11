@@ -44,9 +44,7 @@ void GameLoop::handleUserInput() {
 	while (!validInput(input));
 
 	pair<int,int> coords = stringToPairInt(input);
-	//X is 2
-	short placeX = 2;
-	board.placeMove(coords.first, coords.second, placeX);
+	board.placeMove(coords.first, coords.second, board.Tile::X);
 }
 
 void GameLoop::trimSpaces(string &input) {
