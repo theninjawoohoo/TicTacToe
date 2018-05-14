@@ -15,6 +15,10 @@ private:
 	bool inBounds(int x, int y);
 	bool unoccupied(int x, int y);
 
+	bool checkRows();
+	bool checkColumns();
+	bool checkDiagonals();
+
 public:
 	Board();
 
@@ -22,12 +26,10 @@ public:
 
 	void printBoard();
 	bool checkForWinner();
-	bool checkRows();
-	bool checkColumns();
-	bool checkDiagonals();
 
 	void placeMove(int x, int y, short tile);
 	void placeMove(int i, short tile);
+
 
 	bool validInputPrint(int x, int y);
 	bool validInput(int x, int y);

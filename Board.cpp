@@ -101,6 +101,16 @@ bool Board::unoccupied(int x, int y) {
 	return boardTiles[coordToBoardPosition(x, y)] == Tile::DEFAULT;
 }
 
+//Places tile on given board coordinates.
+void Board::placeMove(int x, int y, short tile) {
+	boardTiles[coordToBoardPosition(x, y)] = tile;
+}
+
+//Places tile on given board index.
+void Board::placeMove(int i, short tile) {
+	boardTiles[i] = tile;
+}
+
 bool Board::validInputPrint(int x, int y) {
 	if (!inBounds(x, y)) {
 		cout << "Location is out of bounds.\n" << endl;
@@ -115,14 +125,4 @@ bool Board::validInputPrint(int x, int y) {
 
 bool Board::validInput(int x, int y) {
 	return inBounds(x, y) && unoccupied(x, y);
-}
-
-//Places tile on given board coordinates.
-void Board::placeMove(int x, int y, short tile) {
-	boardTiles[coordToBoardPosition(x, y)] = tile;
-}
-
-//Places tile on given board index.
-void Board::placeMove(int i, short tile) {
-	boardTiles[i] = tile;
 }
