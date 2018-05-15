@@ -2,6 +2,7 @@
 
 #include "Board.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -36,6 +37,18 @@ char Board::shortToTile(short x) {
 		case 2: tile = 'O'; break;
 	}
 	return tile;
+}
+
+int Board::coordToBoardPosition(int x, int y) {
+	return x + (3*y);
+}
+
+bool Board::inBounds(int x, int y) {
+	return  x >= 0 && x <= 2 && y >= 0 && y <= 2;
+}
+
+bool Board::unoccupied(int x, int y) {
+	return boardTiles[coordToBoardPosition(x, y)] == Tile::DEFAULT;
 }
 
 bool Board::checkForWinner() {
@@ -89,16 +102,14 @@ bool Board::checkDiagonals() {
 	return false;
 }
 
-int Board::coordToBoardPosition(int x, int y) {
-	return x + (3*y);
-}
-
-bool Board::inBounds(int x, int y) {
-	return  x >= 0 && x <= 2 && y >= 0 && y <= 2;
-}
-
-bool Board::unoccupied(int x, int y) {
-	return boardTiles[coordToBoardPosition(x, y)] == Tile::DEFAULT;
+vector<int> Board::possibleMoves() {
+	vector<int> moves;
+	for (unsigned int i = 0; i < BOARD_SIZE; i++) {
+		if (boardTiles[i] == Tile::DEFAULT) {
+			moves.push_back(i);
+		}
+	}
+	return moves;
 }
 
 //Places tile on given board coordinates.

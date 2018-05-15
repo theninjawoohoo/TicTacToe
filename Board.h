@@ -4,14 +4,16 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include <vector>
+
 using namespace std;
 
 class Board {
 private:
 	static const int BOARD_SIZE = 9;
 	short boardTiles[BOARD_SIZE];
-	int coordToBoardPosition(int x, int y);
 	char shortToTile(short x);
+	int coordToBoardPosition(int x, int y);
 	bool inBounds(int x, int y);
 	bool unoccupied(int x, int y);
 
@@ -27,9 +29,9 @@ public:
 	void printBoard();
 	bool checkForWinner();
 
+	vector<int> possibleMoves(); 
 	void placeMove(int x, int y, short tile);
 	void placeMove(int i, short tile);
-
 
 	bool validInputPrint(int x, int y);
 	bool validInput(int x, int y);
