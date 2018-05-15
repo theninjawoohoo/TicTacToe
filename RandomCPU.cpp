@@ -9,7 +9,7 @@ RandomCPU::RandomCPU() {
 }
 
 void RandomCPU::placeMove(Board &board) {
-  int x;
+  	int x;
 	int y;
 
 	do {

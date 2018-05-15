@@ -14,16 +14,11 @@ public:
   void placeMove(Board &board);
 private: 
   int minMax(Board board, int depth, bool isCpu);
-  int max(Board board);
-  int min(Board board);
+  int maxMove(Board board, bool isCPU, int depth, int bestScore);
+  int minMove(Board board, bool isCPU, int depth, int bestScore);
   int bestMove(Board board);
-  bool checkForEndGame(Board board);
-  int findScoreOfBoardState(Board board, bool isCpu);
-  
-  int evaluateRows();
-  int evaluateColumns();
-  int evaluateDiagonals();
-
+  bool gameOver(Board board);
+  int evaluate(Board board, bool isCpu);
 
 };
 
