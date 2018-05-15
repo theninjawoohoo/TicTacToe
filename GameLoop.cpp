@@ -15,22 +15,21 @@ void GameLoop::run() {
 	cout << "Enter a xy cooridinate to place a tile (e.g. 02).\n" << endl;
 
 	while(true) {
-		if (turn % 2 == 0) {
-			handleUserInput();
-		} else {
-			cpu.placeMove(board);
-		}
-		turn++;
-		cout << endl;
-		board.printBoard();
-		cout << endl;
-		if (turn >= 5)
-			if (board.checkForWinner())
-				break;
 		if (turn == 9) {
 			cout << "There was a tie." << endl;
 			break;
 		}
+		//Players turn on even turns
+		(turn % 2 == 0) ? handleUserInput() : cpu.placeMove(board);
+		cout << endl;
+		board.printBoard();
+		cout << endl;
+		if (turn >= 4)
+			if (board.checkForWinner()) {
+				printWinner(turn);
+				break;
+			}
+		turn++;
 	}
 }
 
@@ -74,4 +73,10 @@ pair<int,int> GameLoop::stringToPairInt(string &input) {
 	int x = input.at(0) - 48;
 	int y = input.at(1) - 48;
 	return make_pair(x, y);
+}
+
+void GameLoop::printWinner(int turn) {
+	string winner;
+	(turn % 2 == 0) ? winner = "X" : winner = "O";
+	cout << winner << " won the game!" << endl;
 }

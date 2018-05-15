@@ -61,7 +61,6 @@ bool Board::checkRows() {
 		short mid = boardTiles[3*i + 1];
 		short right = boardTiles[3*i + 2];
 		if (left == mid && left == right && left != Tile::DEFAULT) {
-			cout << shortToTile(mid) << " won the game!" << endl;
 			return true;
 		}
 	}
@@ -74,7 +73,6 @@ bool Board::checkColumns() {
 		short mid = boardTiles[i + 3];
 		short bot = boardTiles[i + 6];
 		if (top == mid && top == bot && top != Tile::DEFAULT) {
-			cout << shortToTile(mid) << " won the game!" << endl;
 			return true;
 		}
 	}
@@ -90,12 +88,10 @@ bool Board::checkDiagonals() {
 
 	//Checks diagonal top left to bottom right
 	if (topLeft == mid && botRight == mid && mid != Tile::DEFAULT) {
-		cout << shortToTile(mid) << " won the game!" << endl;
 		return true;
 	}
 	//Checks diagonal top right to bottom left
 	if (topRight == mid && botLeft == mid && mid!= Tile::DEFAULT) {
-		cout << shortToTile(mid) << " won the game!" << endl;
 		return true;
 	}
 

@@ -19,6 +19,7 @@ private:
 	bool validInput(string &input);
 	bool validLength(string &input);
 	pair<int,int> stringToPairInt(string &input);
+	void printWinner(int turn);
 
 public:
 	GameLoop();
