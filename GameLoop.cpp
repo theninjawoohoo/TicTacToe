@@ -1,18 +1,19 @@
 #include "GameLoop.h"
 #include <iostream>
 #include <utility> 
+#include <limits>
 
 using namespace std;
 
 GameLoop::GameLoop() {
 	board = Board();
-	cpu = RandomCPU();
 	turn = 0;
 }
 
 void GameLoop::run() {
+	setDifficulty();
 	board.printBoard();
-	cout << "Enter a xy cooridinate to place a tile (e.g. 02).\n" << endl;
+	cout << "\nEnter a xy cooridinate to place a tile (e.g. 02)." << endl;
 
 	while(true) {
 		if (turn == 9) {
@@ -20,7 +21,7 @@ void GameLoop::run() {
 			break;
 		}
 		//Players turn on even turns
-		(turn % 2 == 0) ? handleUserInput() : cpu.placeMove(board);
+		(turn % 2 == 0) ? handleUserInput() : cpu->placeMove(board);
 		cout << endl;
 		board.printBoard();
 		cout << endl;
@@ -31,6 +32,19 @@ void GameLoop::run() {
 			}
 		turn++;
 	}
+}
+
+void GameLoop::setDifficulty() {
+	int input;
+	do {
+		cout << "Select the difficulty: 1-easy, 2-hard." << endl;
+		cin >> input;
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	}
+	while (input < 1 || input > 2);
+
+	(input == 1) ? cpu = new RandomCPU() : cpu = new MinMaxCPU();
 }
 
 void GameLoop::handleUserInput() {

@@ -3,6 +3,7 @@
 
 #include "Board.h"
 #include "RandomCPU.h"
+#include "MinMaxCPU.h"
 #include <iostream>
 #include <utility> 
 
@@ -11,9 +12,10 @@ using namespace std;
 class GameLoop {
 private:
 	Board board;
-	RandomCPU cpu;
+	CPU* cpu;
 	int turn;
 
+	void setDifficulty();
 	void handleUserInput();
 	void trimSpaces(string &input);
 	bool validInput(string &input);
